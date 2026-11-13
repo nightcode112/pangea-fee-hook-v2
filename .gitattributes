@@ -1,0 +1,2 @@
+# keep every file byte-for-byte (the sources must hash to metadata.json)
+* -text

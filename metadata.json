@@ -1,0 +1,2779 @@
+{
+ "compiler": {
+  "version": "0.8.30+commit.73712a01"
+ },
+ "language": "Solidity",
+ "output": {
+  "abi": [
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "poolManager_",
+      "type": "address"
+     },
+     {
+      "internalType": "address",
+      "name": "deployer_",
+      "type": "address"
+     },
+     {
+      "internalType": "address",
+      "name": "devBuyer_",
+      "type": "address"
+     },
+     {
+      "internalType": "address",
+      "name": "launchBuyer_",
+      "type": "address"
+     },
+     {
+      "internalType": "address",
+      "name": "locker_",
+      "type": "address"
+     },
+     {
+      "internalType": "address",
+      "name": "core_",
+      "type": "address"
+     },
+     {
+      "internalType": "uint256",
+      "name": "feeDelayBlocks_",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+   },
+   {
+    "inputs": [],
+    "name": "AlreadyRegistered",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "blocks",
+      "type": "uint256"
+     }
+    ],
+    "name": "DelayTooLong",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "factory",
+      "type": "address"
+     }
+    ],
+    "name": "FactoryAlreadyAdded",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "FeeChangeDuringSwap",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint16",
+      "name": "feeBps",
+      "type": "uint16"
+     }
+    ],
+    "name": "FeeOutOfRange",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "HookNotImplemented",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NotDeployer",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NotFactory",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NotFactoryAdmin",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "caller",
+      "type": "address"
+     }
+    ],
+    "name": "NotPayeeOrAdmin",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NotPoolManager",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NotRegistered",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NotSelf",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NothingOwed",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NothingPending",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NothingSwapped",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "NothingToApply",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "OneChangePerBlock",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "sender",
+      "type": "address"
+     }
+    ],
+    "name": "OnlyLocker",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint160",
+      "name": "sqrtPriceX96",
+      "type": "uint160"
+     },
+     {
+      "internalType": "int24",
+      "name": "edgeTick",
+      "type": "int24"
+     }
+    ],
+    "name": "OpensOutOfRange",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "int24",
+      "name": "tick",
+      "type": "int24"
+     },
+     {
+      "internalType": "int24",
+      "name": "edgeTick",
+      "type": "int24"
+     }
+    ],
+    "name": "OutOfRange",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "asked",
+      "type": "uint256"
+     },
+     {
+      "internalType": "uint256",
+      "name": "traded",
+      "type": "uint256"
+     }
+    ],
+    "name": "PartialFill",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint24",
+      "name": "fee",
+      "type": "uint24"
+     }
+    ],
+    "name": "PoolFeeNotZero",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "needed",
+      "type": "uint256"
+     },
+     {
+      "internalType": "uint256",
+      "name": "left",
+      "type": "uint256"
+     }
+    ],
+    "name": "RecordGasTooLow",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "ReentrancyGuardReentrantCall",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "splitter",
+      "type": "address"
+     }
+    ],
+    "name": "SplitterNotOurs",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "SwapDuringFeeChange",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint160",
+      "name": "have",
+      "type": "uint160"
+     },
+     {
+      "internalType": "uint160",
+      "name": "want",
+      "type": "uint160"
+     }
+    ],
+    "name": "WrongFlags",
+    "type": "error"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "hooks",
+      "type": "address"
+     }
+    ],
+    "name": "WrongHook",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "ZeroAddress",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "ZeroFactory",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "ZeroFactoryAdmin",
+    "type": "error"
+   },
+   {
+    "inputs": [],
+    "name": "ZeroSplitter",
+    "type": "error"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "factory",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "index",
+      "type": "uint256"
+     }
+    ],
+    "name": "FactoryAdded",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "previous",
+      "type": "address"
+     },
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "next",
+      "type": "address"
+     }
+    ],
+    "name": "FactoryAdminSet",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "PoolId",
+      "name": "id",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint16",
+      "name": "bps",
+      "type": "uint16"
+     },
+     {
+      "indexed": false,
+      "internalType": "address",
+      "name": "by",
+      "type": "address"
+     }
+    ],
+    "name": "FeeChangeCancelled",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "PoolId",
+      "name": "id",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint16",
+      "name": "fromBps",
+      "type": "uint16"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint16",
+      "name": "toBps",
+      "type": "uint16"
+     },
+     {
+      "indexed": false,
+      "internalType": "address",
+      "name": "by",
+      "type": "address"
+     }
+    ],
+    "name": "FeeChanged",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "PoolId",
+      "name": "id",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint16",
+      "name": "fromBps",
+      "type": "uint16"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint16",
+      "name": "toBps",
+      "type": "uint16"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint64",
+      "name": "fromBlock",
+      "type": "uint64"
+     },
+     {
+      "indexed": false,
+      "internalType": "address",
+      "name": "by",
+      "type": "address"
+     }
+    ],
+    "name": "FeeScheduled",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "PoolId",
+      "name": "id",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "Currency",
+      "name": "currency",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "amount",
+      "type": "uint256"
+     }
+    ],
+    "name": "FeeTaken",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "address",
+      "name": "adder",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "bool",
+      "name": "allowed",
+      "type": "bool"
+     }
+    ],
+    "name": "LiquidityAdderSet",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "PoolId",
+      "name": "id",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "Currency",
+      "name": "currency",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint256",
+      "name": "amount",
+      "type": "uint256"
+     },
+     {
+      "indexed": false,
+      "internalType": "address",
+      "name": "to",
+      "type": "address"
+     }
+    ],
+    "name": "Redeemed",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "PoolId",
+      "name": "id",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "address",
+      "name": "splitter",
+      "type": "address"
+     },
+     {
+      "indexed": false,
+      "internalType": "uint16",
+      "name": "feeBps",
+      "type": "uint16"
+     },
+     {
+      "indexed": false,
+      "internalType": "bool",
+      "name": "quoteIsCurrency0",
+      "type": "bool"
+     },
+     {
+      "indexed": false,
+      "internalType": "int24",
+      "name": "edgeTick",
+      "type": "int24"
+     }
+    ],
+    "name": "Registered",
+    "type": "event"
+   },
+   {
+    "anonymous": false,
+    "inputs": [
+     {
+      "indexed": true,
+      "internalType": "PoolId",
+      "name": "id",
+      "type": "bytes32"
+     },
+     {
+      "indexed": false,
+      "internalType": "bytes",
+      "name": "reason",
+      "type": "bytes"
+     }
+    ],
+    "name": "SettleFailed",
+    "type": "event"
+   },
+   {
+    "inputs": [],
+    "name": "MAX_FEE_BPS",
+    "outputs": [
+     {
+      "internalType": "uint16",
+      "name": "",
+      "type": "uint16"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "MAX_FEE_DELAY_BLOCKS",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "MINED_FLAGS",
+    "outputs": [
+     {
+      "internalType": "uint160",
+      "name": "",
+      "type": "uint160"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "MIN_FEE_BPS",
+    "outputs": [
+     {
+      "internalType": "uint16",
+      "name": "",
+      "type": "uint16"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "RECORD_GAS",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "factory_",
+      "type": "address"
+     }
+    ],
+    "name": "addFactory",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     },
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "",
+      "type": "tuple"
+     },
+     {
+      "components": [
+       {
+        "internalType": "int24",
+        "name": "tickLower",
+        "type": "int24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickUpper",
+        "type": "int24"
+       },
+       {
+        "internalType": "int256",
+        "name": "liquidityDelta",
+        "type": "int256"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "salt",
+        "type": "bytes32"
+       }
+      ],
+      "internalType": "struct ModifyLiquidityParams",
+      "name": "",
+      "type": "tuple"
+     },
+     {
+      "internalType": "BalanceDelta",
+      "name": "",
+      "type": "int256"
+     },
+     {
+      "internalType": "BalanceDelta",
+      "name": "",
+      "type": "int256"
+     },
+     {
+      "internalType": "bytes",
+      "name": "",
+      "type": "bytes"
+     }
+    ],
+    "name": "afterAddLiquidity",
+    "outputs": [
+     {
+      "internalType": "bytes4",
+      "name": "",
+      "type": "bytes4"
+     },
+     {
+      "internalType": "BalanceDelta",
+      "name": "",
+      "type": "int256"
+     }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     },
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "",
+      "type": "tuple"
+     },
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     },
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     },
+     {
+      "internalType": "bytes",
+      "name": "",
+      "type": "bytes"
+     }
+    ],
+    "name": "afterDonate",
+    "outputs": [
+     {
+      "internalType": "bytes4",
+      "name": "",
+      "type": "bytes4"
+     }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     },
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "",
+      "type": "tuple"
+     },
+     {
+      "internalType": "uint160",
+      "name": "",
+      "type": "uint160"
+     },
+     {
+      "internalType": "int24",
+      "name": "",
+      "type": "int24"
+     }
+    ],
+    "name": "afterInitialize",
+    "outputs": [
+     {
+      "internalType": "bytes4",
+      "name": "",
+      "type": "bytes4"
+     }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     },
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "",
+      "type": "tuple"
+     },
+     {
+      "components": [
+       {
+        "internalType": "int24",
+        "name": "tickLower",
+        "type": "int24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickUpper",
+        "type": "int24"
+       },
+       {
+        "internalType": "int256",
+        "name": "liquidityDelta",
+        "type": "int256"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "salt",
+        "type": "bytes32"
+       }
+      ],
+      "internalType": "struct ModifyLiquidityParams",
+      "name": "",
+      "type": "tuple"
+     },
+     {
+      "internalType": "BalanceDelta",
+      "name": "",
+      "type": "int256"
+     },
+     {
+      "internalType": "BalanceDelta",
+      "name": "",
+      "type": "int256"
+     },
+     {
+      "internalType": "bytes",
+      "name": "",
+      "type": "bytes"
+     }
+    ],
+    "name": "afterRemoveLiquidity",
+    "outputs": [
+     {
+      "internalType": "bytes4",
+      "name": "",
+      "type": "bytes4"
+     },
+     {
+      "internalType": "BalanceDelta",
+      "name": "",
+      "type": "int256"
+     }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "sender",
+      "type": "address"
+     },
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "key",
+      "type": "tuple"
+     },
+     {
+      "components": [
+       {
+        "internalType": "bool",
+        "name": "zeroForOne",
+        "type": "bool"
+       },
+       {
+        "internalType": "int256",
+        "name": "amountSpecified",
+        "type": "int256"
+       },
+       {
+        "internalType": "uint160",
+        "name": "sqrtPriceLimitX96",
+        "type": "uint160"
+       }
+      ],
+      "internalType": "struct SwapParams",
+      "name": "params",
+      "type": "tuple"
+     },
+     {
+      "internalType": "BalanceDelta",
+      "name": "delta",
+      "type": "int256"
+     },
+     {
+      "internalType": "bytes",
+      "name": "",
+      "type": "bytes"
+     }
+    ],
+    "name": "afterSwap",
+    "outputs": [
+     {
+      "internalType": "bytes4",
+      "name": "",
+      "type": "bytes4"
+     },
+     {
+      "internalType": "int128",
+      "name": "",
+      "type": "int128"
+     }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "key",
+      "type": "tuple"
+     }
+    ],
+    "name": "applyFee",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "sender",
+      "type": "address"
+     },
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "",
+      "type": "tuple"
+     },
+     {
+      "components": [
+       {
+        "internalType": "int24",
+        "name": "tickLower",
+        "type": "int24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickUpper",
+        "type": "int24"
+       },
+       {
+        "internalType": "int256",
+        "name": "liquidityDelta",
+        "type": "int256"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "salt",
+        "type": "bytes32"
+       }
+      ],
+      "internalType": "struct ModifyLiquidityParams",
+      "name": "",
+      "type": "tuple"
+     },
+     {
+      "internalType": "bytes",
+      "name": "",
+      "type": "bytes"
+     }
+    ],
+    "name": "beforeAddLiquidity",
+    "outputs": [
+     {
+      "internalType": "bytes4",
+      "name": "",
+      "type": "bytes4"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     },
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "",
+      "type": "tuple"
+     },
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     },
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     },
+     {
+      "internalType": "bytes",
+      "name": "",
+      "type": "bytes"
+     }
+    ],
+    "name": "beforeDonate",
+    "outputs": [
+     {
+      "internalType": "bytes4",
+      "name": "",
+      "type": "bytes4"
+     }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     },
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "key",
+      "type": "tuple"
+     },
+     {
+      "internalType": "uint160",
+      "name": "sqrtPriceX96",
+      "type": "uint160"
+     }
+    ],
+    "name": "beforeInitialize",
+    "outputs": [
+     {
+      "internalType": "bytes4",
+      "name": "",
+      "type": "bytes4"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     },
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "",
+      "type": "tuple"
+     },
+     {
+      "components": [
+       {
+        "internalType": "int24",
+        "name": "tickLower",
+        "type": "int24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickUpper",
+        "type": "int24"
+       },
+       {
+        "internalType": "int256",
+        "name": "liquidityDelta",
+        "type": "int256"
+       },
+       {
+        "internalType": "bytes32",
+        "name": "salt",
+        "type": "bytes32"
+       }
+      ],
+      "internalType": "struct ModifyLiquidityParams",
+      "name": "",
+      "type": "tuple"
+     },
+     {
+      "internalType": "bytes",
+      "name": "",
+      "type": "bytes"
+     }
+    ],
+    "name": "beforeRemoveLiquidity",
+    "outputs": [
+     {
+      "internalType": "bytes4",
+      "name": "",
+      "type": "bytes4"
+     }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "sender",
+      "type": "address"
+     },
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "key",
+      "type": "tuple"
+     },
+     {
+      "components": [
+       {
+        "internalType": "bool",
+        "name": "zeroForOne",
+        "type": "bool"
+       },
+       {
+        "internalType": "int256",
+        "name": "amountSpecified",
+        "type": "int256"
+       },
+       {
+        "internalType": "uint160",
+        "name": "sqrtPriceLimitX96",
+        "type": "uint160"
+       }
+      ],
+      "internalType": "struct SwapParams",
+      "name": "params",
+      "type": "tuple"
+     },
+     {
+      "internalType": "bytes",
+      "name": "",
+      "type": "bytes"
+     }
+    ],
+    "name": "beforeSwap",
+    "outputs": [
+     {
+      "internalType": "bytes4",
+      "name": "",
+      "type": "bytes4"
+     },
+     {
+      "internalType": "BeforeSwapDelta",
+      "name": "",
+      "type": "int256"
+     },
+     {
+      "internalType": "uint24",
+      "name": "",
+      "type": "uint24"
+     }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "core_",
+      "type": "address"
+     }
+    ],
+    "name": "buyerOf",
+    "outputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "key",
+      "type": "tuple"
+     }
+    ],
+    "name": "cancelPendingFee",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "PoolId",
+      "name": "",
+      "type": "bytes32"
+     }
+    ],
+    "name": "configs",
+    "outputs": [
+     {
+      "internalType": "address",
+      "name": "splitter",
+      "type": "address"
+     },
+     {
+      "internalType": "bool",
+      "name": "quoteIsCurrency0",
+      "type": "bool"
+     },
+     {
+      "internalType": "uint16",
+      "name": "feeBps",
+      "type": "uint16"
+     },
+     {
+      "internalType": "bool",
+      "name": "registered",
+      "type": "bool"
+     },
+     {
+      "internalType": "int24",
+      "name": "edgeTick",
+      "type": "int24"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "core",
+    "outputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "coreBuyer",
+    "outputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "deployer",
+    "outputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "devBuyer",
+    "outputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "factories",
+    "outputs": [
+     {
+      "internalType": "address[]",
+      "name": "",
+      "type": "address[]"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "factoryAdmin",
+    "outputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "uint256",
+      "name": "index",
+      "type": "uint256"
+     }
+    ],
+    "name": "factoryAt",
+    "outputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "factoryCount",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "PoolId",
+      "name": "",
+      "type": "bytes32"
+     }
+    ],
+    "name": "factoryOf",
+    "outputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "PoolId",
+      "name": "",
+      "type": "bytes32"
+     }
+    ],
+    "name": "feeChanged",
+    "outputs": [
+     {
+      "internalType": "bool",
+      "name": "",
+      "type": "bool"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "feeDelayBlocks",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "PoolId",
+      "name": "id",
+      "type": "bytes32"
+     }
+    ],
+    "name": "feeOf",
+    "outputs": [
+     {
+      "internalType": "uint16",
+      "name": "",
+      "type": "uint16"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "name": "isFactory",
+    "outputs": [
+     {
+      "internalType": "bool",
+      "name": "",
+      "type": "bool"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "name": "isLiquidityAdder",
+    "outputs": [
+     {
+      "internalType": "bool",
+      "name": "",
+      "type": "bool"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "PoolId",
+      "name": "",
+      "type": "bytes32"
+     }
+    ],
+    "name": "lastChangeBlock",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "launchBuyer",
+    "outputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "locker",
+    "outputs": [
+     {
+      "internalType": "address",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "PoolId",
+      "name": "",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "Currency",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "name": "owed",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "PoolId",
+      "name": "",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "Currency",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "name": "owedAtPending",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "PoolId",
+      "name": "id",
+      "type": "bytes32"
+     },
+     {
+      "internalType": "Currency",
+      "name": "currency",
+      "type": "address"
+     }
+    ],
+    "name": "owedNow",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "PoolId",
+      "name": "",
+      "type": "bytes32"
+     }
+    ],
+    "name": "pendingFee",
+    "outputs": [
+     {
+      "internalType": "uint16",
+      "name": "feeBps",
+      "type": "uint16"
+     },
+     {
+      "internalType": "uint64",
+      "name": "fromBlock",
+      "type": "uint64"
+     },
+     {
+      "internalType": "address",
+      "name": "by",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "PoolId",
+      "name": "id",
+      "type": "bytes32"
+     }
+    ],
+    "name": "pendingFeeOf",
+    "outputs": [
+     {
+      "internalType": "uint16",
+      "name": "feeBps",
+      "type": "uint16"
+     },
+     {
+      "internalType": "uint64",
+      "name": "fromBlock",
+      "type": "uint64"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [],
+    "name": "poolManager",
+    "outputs": [
+     {
+      "internalType": "contract IPoolManager",
+      "name": "",
+      "type": "address"
+     }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "key",
+      "type": "tuple"
+     }
+    ],
+    "name": "redeem",
+    "outputs": [
+     {
+      "internalType": "uint256",
+      "name": "amount0",
+      "type": "uint256"
+     },
+     {
+      "internalType": "uint256",
+      "name": "amount1",
+      "type": "uint256"
+     }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "key",
+      "type": "tuple"
+     },
+     {
+      "internalType": "address",
+      "name": "splitter",
+      "type": "address"
+     },
+     {
+      "internalType": "bool",
+      "name": "quoteIsCurrency0",
+      "type": "bool"
+     },
+     {
+      "internalType": "uint16",
+      "name": "feeBps",
+      "type": "uint16"
+     },
+     {
+      "internalType": "int24",
+      "name": "edgeTick",
+      "type": "int24"
+     }
+    ],
+    "name": "register",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "next",
+      "type": "address"
+     }
+    ],
+    "name": "setFactoryAdmin",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "key",
+      "type": "tuple"
+     },
+     {
+      "internalType": "uint16",
+      "name": "feeBps",
+      "type": "uint16"
+     }
+    ],
+    "name": "setFee",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "address",
+      "name": "adder",
+      "type": "address"
+     },
+     {
+      "internalType": "bool",
+      "name": "allowed",
+      "type": "bool"
+     }
+    ],
+    "name": "setLiquidityAdder",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "components": [
+       {
+        "internalType": "Currency",
+        "name": "currency0",
+        "type": "address"
+       },
+       {
+        "internalType": "Currency",
+        "name": "currency1",
+        "type": "address"
+       },
+       {
+        "internalType": "uint24",
+        "name": "fee",
+        "type": "uint24"
+       },
+       {
+        "internalType": "int24",
+        "name": "tickSpacing",
+        "type": "int24"
+       },
+       {
+        "internalType": "contract IHooks",
+        "name": "hooks",
+        "type": "address"
+       }
+      ],
+      "internalType": "struct PoolKey",
+      "name": "key",
+      "type": "tuple"
+     }
+    ],
+    "name": "settleDue",
+    "outputs": [
+     {
+      "internalType": "bool",
+      "name": "switched",
+      "type": "bool"
+     }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   },
+   {
+    "inputs": [
+     {
+      "internalType": "bytes",
+      "name": "data",
+      "type": "bytes"
+     }
+    ],
+    "name": "unlockCallback",
+    "outputs": [
+     {
+      "internalType": "bytes",
+      "name": "",
+      "type": "bytes"
+     }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+   }
+  ],
+  "devdoc": {
+   "details": "Implements IPangeaLaunchHookV2 (and so IPangeaLaunchHook) without naming it as a base: the      interface declares `isFactory(address)` and FactoryList answers it with a public mapping,      which Solidity will not let a contract inherit alongside the interface's function, and      FactoryList is shared with the live hook, locker and collector, whose code hashes a change      there would move. The conformance is pinned by test instead (selector for selector, the      interface ids, and every call through the interface); `FeeChanged` is the interface's own      event, emitted by its qualified name, so it cannot drift.",
+   "errors": {
+    "ReentrancyGuardReentrantCall()": [
+     {
+      "details": "Unauthorized reentrant call."
+     }
+    ]
+   },
+   "kind": "dev",
+   "methods": {
+    "afterInitialize(address,(address,address,uint24,int24,address),uint160,int24)": {
+     "details": "v4 calls only what a hook's address advertises, so these can never be reached; they      revert so that a mis-mined address fails loudly."
+    },
+    "afterSwap(address,(address,address,uint24,int24,address),(bool,int256,uint160),int256,bytes)": {
+     "details": "Takes the fee when the quote is the unspecified currency -- a sell, for an exact-in      swap -- and holds every swap to the launch's range.",
+     "params": {
+      "delta": "The amount owed to the caller (positive) or owed to the pool (negative)",
+      "hookData": "Arbitrary data handed into the PoolManager by the swapper to be be passed on to the hook",
+      "key": "The key for the pool",
+      "params": "The parameters for the swap",
+      "sender": "The initial msg.sender for the swap call"
+     },
+     "returns": {
+      "_0": "bytes4 The function selector for the hook",
+      "_1": "int128 The hook's delta in unspecified currency. Positive: the hook is owed/took currency, negative: the hook owes/sent currency"
+     }
+    },
+    "beforeInitialize(address,(address,address,uint24,int24,address),uint160)": {
+     "details": "Refuses a pool the factory has not registered, and a pool opening on the empty side of      its edge. As on the live hook.",
+     "params": {
+      "key": "The key for the pool being initialized",
+      "sender": "The initial msg.sender for the initialize call",
+      "sqrtPriceX96": "The sqrt(price) of the pool as a Q64.96"
+     },
+     "returns": {
+      "_0": "bytes4 The function selector for the hook"
+     }
+    },
+    "beforeSwap(address,(address,address,uint24,int24,address),(bool,int256,uint160),bytes)": {
+     "details": "Takes the fee when the quote is the specified currency -- a buy, for an exact-in swap.",
+     "params": {
+      "hookData": "Arbitrary data handed into the PoolManager by the swapper to be be passed on to the hook",
+      "key": "The key for the pool",
+      "params": "The parameters for the swap",
+      "sender": "The initial msg.sender for the swap call"
+     },
+     "returns": {
+      "_0": "bytes4 The function selector for the hook",
+      "_1": "BeforeSwapDelta The hook's delta in specified and unspecified currencies. Positive: the hook is owed/took currency, negative: the hook owes/sent currency",
+      "_2": "uint24 Optionally override the lp fee, only used if three conditions are met: 1. the Pool has a dynamic fee, 2. the value's 2nd highest bit is set (23rd bit, 0x400000), and 3. the value is less than or equal to the maximum fee (1 million)"
+     }
+    },
+    "redeem((address,address,uint24,int24,address))": {
+     "details": "`NothingOwed` only when nothing was redeemed AND nothing was settled. A settlement with      nothing else owed is a redeem that did its work: reverting it would roll the switch      back, and a caller that tries it and ignores failure -- TokenomicsVault's `_pull` -- would      leave the change unsettled and the old-rate claims in the hook. A settlement the      splitter refuses is rolled back alone (`settleDue` is its own call): the old-rate claims      are still redeemed, and `SettleFailed` says why the switch did not happen."
+    },
+    "setFee((address,address,uint24,int24,address),uint16)": {
+     "details": "With no delay: redeem, `splitter.setFeeBps`, store -- see \"A FEE CHANGE NEVER      RE-PRICES\". With a delay: settle any scheduled rate that has already taken effect, then      schedule this one, replacing one that has not. Scheduling the rate already in force      cancels a pending change (`FeeChangeCancelled`). While a due change cannot be settled      (its splitter refuses) this reverts; see \"A SPLITTER THAT REFUSES\".      Reverts inside a PoolManager unlock when the pool has claims to redeem (v4 refuses a      nested unlock); there is nothing to settle at the old rate in the case it lets through."
+    },
+    "settleDue((address,address,uint24,int24,address))": {
+     "details": "Not `nonReentrant`: it runs inside `redeem`, which holds the guard."
+    },
+    "unlockCallback(bytes)": {
+     "params": {
+      "data": "The data that was passed to the call to unlock"
+     },
+     "returns": {
+      "_0": "Any data that you want to be returned from the unlock call"
+     }
+    }
+   },
+   "stateVariables": {
+    "RECORD_PRICE": {
+     "details": "recordPrice(bytes32,uint160,uint160,uint16)."
+    },
+    "_swapsOpen": {
+     "details": "How many swaps on this hook are between their beforeSwap and their afterSwap (transient:      this transaction only, and a reverted swap rolls its count back). A count, not a flag, so a      swap nested inside another's price record does not clear the outer one's."
+    }
+   },
+   "title": "PangeaFeeHookV2M -- Hook V2 (hookv2-ready-20261107 @ 807b71cc6) merged with the v4 hook (PangeaFeeHookV4)PangeaFeeHookV2",
+   "version": 1
+  },
+  "userdoc": {
+   "errors": {
+    "FeeChangeDuringSwap()": [
+     {
+      "notice": "`setFee`, `applyFee`, `redeem` or `cancelPendingFee` from inside a swap on this hook         (between its beforeSwap and its afterSwap): see \"NO SWAP RUNS WHILE A FEE IS MOVING\"."
+     }
+    ],
+    "NotPayeeOrAdmin(address)": [
+     {
+      "notice": "`setFee` from someone who is neither the pool's payee nor the platform admin."
+     }
+    ],
+    "NotSelf()": [
+     {
+      "notice": "`settleDue` from anyone but this contract."
+     }
+    ],
+    "NothingPending()": [
+     {
+      "notice": "`cancelPendingFee` with nothing scheduled."
+     }
+    ],
+    "NothingToApply()": [
+     {
+      "notice": "`applyFee` with nothing scheduled that has taken effect."
+     }
+    ],
+    "OneChangePerBlock()": [
+     {
+      "notice": "A second no-delay fee change on one pool in one block."
+     }
+    ],
+    "RecordGasTooLow(uint256,uint256)": [
+     {
+      "notice": "A swap left with less gas than its record needs reverts (`RecordGasTooLow`): a record         can never be skipped by the gas the swapper chose (owner 2026-10-28, v3 audit H-1/H-2)."
+     }
+    ],
+    "SplitterNotOurs(address)": [
+     {
+      "notice": "The pool's splitter does not name this hook, so it would refuse `setFeeBps`."
+     }
+    ],
+    "SwapDuringFeeChange()": [
+     {
+      "notice": "A swap while this hook is changing, settling or redeeming a pool's fee: it would be         charged one rate and divided at another."
+     }
+    ]
+   },
+   "events": {
+    "FeeChangeCancelled(bytes32,uint16,address)": {
+     "notice": "Delay mode: the scheduled rate `bps` was dropped -- by scheduling the rate in force,         or by the admin (`cancelPendingFee`)."
+    },
+    "FeeScheduled(bytes32,uint16,uint16,uint64,address)": {
+     "notice": "Delay mode: `toBps` is charged from block `fromBlock`."
+    },
+    "SettleFailed(bytes32,bytes)": {
+     "notice": "Delay mode: `redeem` could not settle a due change (the splitter refused the         switch). The old-rate claims were redeemed anyway; the new-rate ones stay held."
+    }
+   },
+   "kind": "user",
+   "methods": {
+    "MAX_FEE_DELAY_BLOCKS()": {
+     "notice": "The longest delay a hook may be built with: a day of 12-second blocks."
+    },
+    "MINED_FLAGS()": {
+     "notice": "The six permissions this hook needs, which its address must encode: exactly the         live hook's, which is what `setLaunchHook` on factory v3 requires."
+    },
+    "MIN_FEE_BPS()": {
+     "notice": "The bounds a pool's fee must sit within, at registration and at every change. The         same two numbers the splitter enforces."
+    },
+    "RECORD_GAS()": {
+     "notice": "The gas `recordPrice` is given on every swap: a v3 token's first record copies its         official pool from the registry (and reads its quote's decimals) and writes five slots."
+    },
+    "addFactory(address)": {
+     "notice": "Add a factory that may open NEW pools or launches here. Append-only: no factory is         ever removed or replaced, and none can change a record already made."
+    },
+    "afterSwap(address,(address,address,uint24,int24,address),(bool,int256,uint160),int256,bytes)": {
+     "notice": "The hook called after a swap"
+    },
+    "applyFee((address,address,uint24,int24,address))": {
+     "notice": "Delay mode: settle a scheduled rate that has taken effect -- redeem what was earned         at the old rate, switch the splitter, store the rate. Anyone may call it; `redeem`         and `setFee` do it too."
+    },
+    "beforeAddLiquidity(address,(address,address,uint24,int24,address),(int24,int24,int256,bytes32),bytes)": {
+     "notice": "Only the locker adds liquidity, and whoever the admin has named. As on the live hook."
+    },
+    "beforeInitialize(address,(address,address,uint24,int24,address),uint160)": {
+     "notice": "The hook called before the state of a pool is initialized"
+    },
+    "beforeSwap(address,(address,address,uint24,int24,address),(bool,int256,uint160),bytes)": {
+     "notice": "The hook called before a swap"
+    },
+    "buyerOf(address)": {
+     "notice": "MERGE (as PangeaFeeHookV4.buyerOf): the core's own BridgeBuyerV4, the first contract `core_` CREATEs         (nonce 1)."
+    },
+    "cancelPendingFee((address,address,uint24,int24,address))": {
+     "notice": "Delay mode: drop a pool's scheduled rate, due or not. The platform admin only -- the         remedy for a splitter that refuses the switch. Claims already charged at the         scheduled rate join `owed`, divided at the rate the splitter is on."
+    },
+    "core()": {
+     "notice": "MERGE: the LaunchCoreV4 (proxy) whose own buyer is free, and that buyer (CREATE by `core`, nonce 1)."
+    },
+    "deployer()": {
+     "notice": "The key that deployed this hook, and its first `factoryAdmin`. Under CREATE3 the         deploying contract is CreateX's proxy, so this is an argument, not `msg.sender`."
+    },
+    "devBuyer()": {
+     "notice": "This chain's LaunchFeeCollector, which makes each launch's dev buy: charged nothing."
+    },
+    "factories()": {
+     "notice": "Every factory added, oldest first."
+    },
+    "factoryAdmin()": {
+     "notice": "May add a factory (and, on the hook, name who else may add liquidity)."
+    },
+    "factoryOf(bytes32)": {
+     "notice": "The factory that registered each pool. Written once, with the pool's config."
+    },
+    "feeChanged(bytes32)": {
+     "notice": "Whether a pool's fee has ever been changed since it was registered: a `setFee` that         moved the rate (no delay) or scheduled a change (delay mode). A setFee to the rate in         force, or one that only cancels a pending change, leaves it as it was (xa-dvn-hooks I-4). The v3 token prices the gap fee's allowance at the         fee in force at its price records; before its first record it has none, and this         says whether the registered (launch) fee still stands (round-4 audit M-1)."
+    },
+    "feeDelayBlocks()": {
+     "notice": "Blocks between `setFee` and the first swap charged the new rate. 0: none."
+    },
+    "feeOf(bytes32)": {
+     "notice": "The rate a swap on this pool is charged now (before any exemption): THE read for         anyone pricing a trade or showing the fee. `configs(id).feeBps` is the rate the         splitter divides by, which lags it in delay mode until a change is settled."
+    },
+    "isFactory(address)": {
+     "notice": "Whether `factory` may act here."
+    },
+    "isLiquidityAdder(address)": {
+     "notice": "Addresses besides the locker that may ADD liquidity, set by `factoryAdmin`."
+    },
+    "lastChangeBlock(bytes32)": {
+     "notice": "No delay only: the block of each pool's last fee change. See \"ONE CHANGE PER POOL         PER BLOCK\"."
+    },
+    "launchBuyer()": {
+     "notice": "This chain's LaunchBuys, which makes each launch's launch buys: charged nothing."
+    },
+    "locker()": {
+     "notice": "The only address that may add liquidity besides `isLiquidityAdder`: this chain's         LiquidityLocker."
+    },
+    "owed(bytes32,address)": {
+     "notice": "Claims accrued per pool, per currency, at the pool's `configs` rate, waiting to be         redeemed into real tokens."
+    },
+    "owedAtPending(bytes32,address)": {
+     "notice": "Delay mode only: claims accrued at a pending rate that has taken effect, before the         switch has been settled with the splitter. They join `owed` when it is."
+    },
+    "owedNow(bytes32,address)": {
+     "notice": "Every claim the pool has earned and not yet redeemed, in `currency`: `owed` plus,         in delay mode, what is held at a pending rate (`owedAtPending`)."
+    },
+    "pendingFee(bytes32)": {
+     "notice": "Delay mode only: each pool's scheduled rate."
+    },
+    "pendingFeeOf(bytes32)": {
+     "notice": "The rate scheduled for a pool and the first block charged it, or (0, 0)."
+    },
+    "redeem((address,address,uint24,int24,address))": {
+     "notice": "Turn a pool's accrued claims into real tokens, sent to its splitter. Permissionless,         as on the live hook. In delay mode a rate that has taken effect is settled first,         and the amounts returned include the old-rate claims that settlement redeemed."
+    },
+    "register((address,address,uint24,int24,address),address,bool,uint16,int24)": {
+     "notice": "Record a pool, exactly as the live hook does. Once only; the splitter, the side and         the edge are fixed from then on. The fee is the starting fee; `setFee` moves it."
+    },
+    "setFactoryAdmin(address)": {
+     "notice": "Hand the role to another key. The current admin only."
+    },
+    "setFee((address,address,uint24,int24,address),uint16)": {
+     "notice": "Move a pool's fee to `feeBps`, inside [MIN_FEE_BPS, MAX_FEE_BPS]. The pool's payee         (its splitter's `creator`) or the platform admin (`factoryAdmin`) only."
+    },
+    "setLiquidityAdder(address,bool)": {
+     "notice": "Allow or stop `adder` adding liquidity to the pools this hook serves. The factory         admin only. As on the live hook."
+    },
+    "settleDue((address,address,uint24,int24,address))": {
+     "notice": "`redeem`'s settlement of a due change, as a call of its own so a splitter that         refuses rolls back the settlement only. This contract alone may call it."
+    },
+    "unlockCallback(bytes)": {
+     "notice": "Called by the pool manager on `msg.sender` when the manager is unlocked"
+    }
+   },
+   "notice": "MERGE (owner 2026-11-12): this file is src/v3/PangeaFeeHookV2.sol at 807b71cc6 with exactly these changes:   1. a THIRD fee-free swapper, `coreBuyer` = LaunchCoreV4's own BridgeBuyerV4 (`buyerOf(core)`: the first contract      the core proxy CREATEs, nonce 1), exactly as PangeaFeeHookV4 derives it -- so the v4 core's launch buys and      creator first buys pay no fee on this hook as they did on 0x2243..8cC. `core` and `coreBuyer` are immutable,      constructor-derived; no config value or admin can name another. `_free` = devBuyer || launchBuyer || coreBuyer.   2. the constructor takes `core_` (nonzero) after `locker_`.   `launchBuyer` keeps Hook V2's meaning (the chain's v3 LaunchBuys), which factory v3's allowLaunchHook checks.   Nothing else changed: fee model, setFee/delay machinery, gap record, range edge, flags, storage order. (Hook V2's notes follow.)PangeaFeeHook with a fee that can move. Everything the live hook does, it does the same         way, with the same six permission bits, the same `register`, and `configs`/`factoryOf`         in the same shape (TokenomicsVault reads them). Three things are new:   1. `setFee(key, feeBps)`: the pool's payee (its splitter's `creator`) or the platform admin      (`factoryAdmin`) moves the pool's fee anywhere in [MIN_FEE_BPS, MAX_FEE_BPS].   2. A second fee-free swapper, `launchBuyer` (this chain's LaunchBuys), beside `devBuyer`.   3. `feeDelayBlocks`, fixed at construction: 0 (the default) and a change takes effect in the      transaction that makes it; N and it takes effect N blocks later. The second is the      fallback kept ready in case Uniswap's hook review objects to an instant change. The live hook's notes, all still true here, are in src/venues/PangeaFeeHook.sol and FEE-HOOK-REVIEW.md. What follows is only what changed. A FEE CHANGE NEVER RE-PRICES WHAT WAS ALREADY EARNED. The splitter divides what it holds by its own rate: the platform takes a fifth of the fee or 0.2% of volume, whichever is more, and it works volume out from the amount and the rate. So fees earned at 0.3% and divided at 5% would give the platform a fifth of them instead of two thirds -- 0.06% of that volume rather than 0.2%. A change therefore runs in this order, and never another:   1. every claim this pool has earned at the old rate is redeemed to its splitter;   2. `splitter.setFeeBps(quote, new)`: the splitter pays out everything it holds at the old      rate, then switches;   3. the hook stores the new rate, and every swap from then on is charged it. No fee earned at one rate reaches the splitter while it is dividing at the other. WITH A DELAY, THE SAME ORDER, LATER. `setFee` only schedules the new rate (`pendingFeeOf`), for `block.number + feeDelayBlocks`. From that block every swap is charged it -- but a swap runs inside the PoolManager's lock, where nothing can be redeemed, so the claims earned at the new rate before the switch has been settled are kept apart (`owedAtPending`). The switch itself -- steps 1 to 3 above, then the kept-apart claims joining `owed` -- runs on the next `applyFee`, `redeem` or `setFee` for the pool, whichever comes first; `applyFee` is anyone's. Until it runs `configs(id).feeBps` still shows the old rate; `feeOf(id)` is the rate a swap pays now. A SPLITTER THAT REFUSES THE SWITCH LOCKS NOTHING. `redeem` runs the settlement as its own call (`settleDue`) and, if the splitter refuses, rolls back only that: it still redeems every old-rate claim to the splitter (which still divides at the old rate) and keeps the new-rate claims held in `owedAtPending` until a settlement goes through. `applyFee` and a payee's next `setFee` revert while the splitter refuses. The platform admin may `cancelPendingFee`: the scheduled rate is dropped and its held claims join `owed`, to be divided at the rate the splitter is still on -- the one remedy left when a splitter will not switch, and the admin's. NO SWAP RUNS WHILE A FEE IS MOVING. `setFee`, `applyFee`, `redeem` and `cancelPendingFee` call out (the PoolManager, the splitter, and through it the payee). A swap from inside one of them would be charged at one rate between the redeem and the store and divided at the other, so `beforeSwap` refuses every swap while any of them is running. And the other way round: none of them runs while a swap is between its `beforeSwap` and its `afterSwap` (`FeeChangeDuringSwap`): the swap's one external call (the token's price record) could otherwise settle or move the rate after the swap was charged one and before its other half is booked (hookv2-ready I-1). THE DELAY COUNTS `block.number`, WHICH IS NOT THE SAME CLOCK EVERYWHERE. On Ethereum, Base and BSC it is the chain's own block (about 12 s, 2 s and under a second). On Robinhood Chain, an Arbitrum chain, `block.number` is the PARENT chain's block number as last seen by the sequencer, so many of its own blocks share one value and \"one block\" is one parent block, about 12 s. Blocks rather than seconds on purpose: what the fallback promises is that a change never applies in the block (by `block.number`) that made it -- so a trade sent before or alongside a change, and every quote taken in that block, pays the rate it saw -- and `block.number` gives exactly that on all four chains. A timestamp would need a number of seconds chosen per chain, and on Arbitrum many blocks share a timestamp too. The default is no delay at all. ONE CHANGE PER POOL PER BLOCK, WITH NO DELAY. Without it a payee contract could, in one transaction, drop its pool to 0.3%, trade, and put it back to 5%: its own trades charged at the floor -- where the platform's cut is 0.2% of volume, against a fifth of 5% at the ceiling -- on a pool everybody else sees at 5%. So a no-delay `setFee` is refused in a block where the pool's fee already changed (`lastChangeBlock`), whoever makes it: payee and admin share the count. With a delay the rule is not needed (nothing takes effect inside the block that schedules it) and scheduling, replacing and cancelling within a block stay possible. THE PAYEE AND THE ADMIN ARE PEERS: LAST WRITER WINS. Either may change the fee, and the later change replaces the earlier -- nothing gives one precedence. A change scheduled (delay mode) by a payee the platform has since rotated out of the splitter still applies when it falls due; the admin can `cancelPendingFee` it, and the new payee can replace it. WHO MAY CHANGE IT, AND WHAT THAT MEANS FOR A TRADER. The payee -- the address the pool's fees are for -- and the platform admin. Neither can take more than MAX_FEE_BPS, change where the fees go, touch the range, the liquidity or a registered pool's splitter. What an instant change does allow is a payee raising the fee in front of a pending trade; the trader's own slippage bound (every router sets one) caps what that can cost them, and the delay mode takes it away. TWO SWAPPERS PAY NOTHING. `devBuyer` (this chain's LaunchFeeCollector, the dev buy) as before, and `launchBuyer` (this chain's LaunchBuys, the launch buys a creator pays for with the launch). Both are constructor arguments, immutable, and part of the init code. Why that is safe is the same for both: `sender` is the address that called `poolManager.swap`, which nobody can pretend to be, and each of the two swaps only from its own unlock callback, inside a launch, for that launch's pool -- neither swaps for a caller or takes a pool key from one. Why a constructor argument and not \"settable once\". Under CREATE3 the address does not depend on the init code, so a constructor argument costs the mined address nothing; it keeps the exemption a storage-free compare on every swap; and it leaves no window in which an admin key could exempt an address of its choosing. The cost: LaunchBuys must exist first, and a new LaunchBuys means a new hook.",
+   "version": 1
+  }
+ },
+ "settings": {
+  "compilationTarget": {
+   "src/v3/PangeaFeeHookV2M.sol": "PangeaFeeHookV2M"
+  },
+  "evmVersion": "cancun",
+  "libraries": {},
+  "metadata": {
+   "bytecodeHash": "ipfs"
+  },
+  "optimizer": {
+   "enabled": true,
+   "runs": 200
+  },
+  "remappings": [
+   ":@layerzerolabs/lz-evm-protocol-v2/=lib/layerzero/protocol-v2/",
+   ":@layerzerolabs/oapp-evm/=lib/layerzero/oapp-evm/",
+   ":@layerzerolabs/oft-evm/=lib/layerzero/oft-evm/",
+   ":@openzeppelin/=lib/openzeppelin-contracts/",
+   ":@uniswap/v4-core/=lib/uniswap-v4-core/",
+   ":ds-test/=lib/openzeppelin-contracts/lib/forge-std/lib/ds-test/src/",
+   ":erc4626-tests/=lib/openzeppelin-contracts/lib/erc4626-tests/",
+   ":forge-std/=lib/forge-std/src/",
+   ":halmos-cheatcodes/=lib/openzeppelin-contracts/lib/halmos-cheatcodes/src/",
+   ":layerzero/=lib/layerzero/",
+   ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+   ":solmate/=lib/solmate/",
+   ":uniswap-v4-core/=lib/uniswap-v4-core/src/"
+  ],
+  "viaIR": true
+ },
+ "sources": {
+  "lib/openzeppelin-contracts/contracts/utils/ReentrancyGuardTransient.sol": {
+   "keccak256": "0x534bf5c25d6003a8ce50b400d20fa460c03169ad7baa90d47a912917c36dfe2b",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://cc0cc39c40ea23d3c46e8517e19ebdd877719d3159fa032f2a91802cdd205c79",
+    "dweb:/ipfs/QmSoNh7HTkD4TJcBkBKSGSPMMpLUZKE7s9f2G6mjdaJywg"
+   ]
+  },
+  "lib/openzeppelin-contracts/contracts/utils/TransientSlot.sol": {
+   "keccak256": "0x9303ef5a2beb555e52ce56598de205ce07ca8988fc67d073687c06cb8fc973d1",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://8b2e48fb42844c25e6cb38e7cfa1d91dcdc054613fd10f608833dbc677acf889",
+    "dweb:/ipfs/QmT4HQxbgpWA3fZnK4dY3eXHNCoyBvpvzNq5k7eSt5mR5t"
+   ]
+  },
+  "lib/uniswap-v4-core/src/interfaces/IExtsload.sol": {
+   "keccak256": "0x80b53ca4907d6f0088c3b931f2b72cad1dc4615a95094d96bd0fb8dff8d5ba43",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://375c69148622aab7a3537d5fd37d373a8e9731022c8d87bdaee46233b0a99fe1",
+    "dweb:/ipfs/QmXFjdoYRxsA5B1kyuxEXgNf3FBoL1zPvy26Qy8EtpdFRN"
+   ]
+  },
+  "lib/uniswap-v4-core/src/interfaces/IExttload.sol": {
+   "keccak256": "0xc6b68283ebd8d1c789df536756726eed51c589134bb20821b236a0d22a135937",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://294394f72dfc219689209f4130d85601dfd0d63c8d47578050d312db70f9b6c8",
+    "dweb:/ipfs/QmTDMQ3oxCGHgEBU48a3Lp4S1rRjc8vVCxkhE5ZNej1bsY"
+   ]
+  },
+  "lib/uniswap-v4-core/src/interfaces/IHooks.sol": {
+   "keccak256": "0xc131ffa2d04c10a012fe715fe2c115811526b7ea34285cf0a04ce7ce8320da8d",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://3b212358897db5d99c21244d88f97b2e788527552cb430629b472a8cc6289aec",
+    "dweb:/ipfs/QmQtwV4dDe2RYk2ErLpaAX7U82jWh1L6Lw2HRuKDvBi84G"
+   ]
+  },
+  "lib/uniswap-v4-core/src/interfaces/IPoolManager.sol": {
+   "keccak256": "0xbdab3544da3d32dfdf7457baa94e17d5a3012952428559e013ffac45d067038e",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://ce95ff864468e37c76adf71df061d4f3d6f3a5ec1f9bc3aea090463bc72798f4",
+    "dweb:/ipfs/QmSbWh1pLbz51yQF4HEu5NRhr8XVv9JYGEw1hq1HudAnCi"
+   ]
+  },
+  "lib/uniswap-v4-core/src/interfaces/IProtocolFees.sol": {
+   "keccak256": "0x32a666e588a2f66334430357bb1e2424fe7eebeb98a3364b1dd16eb6ccca9848",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://85751d302125881f72e5f8af051c2d5d9b1f606ebaea8ca7d04fccdd27cc252d",
+    "dweb:/ipfs/QmeRwomeh9NWm6A6fgNA4KZPQZHPpdKsPQyYsHSFmvud7J"
+   ]
+  },
+  "lib/uniswap-v4-core/src/interfaces/callback/IUnlockCallback.sol": {
+   "keccak256": "0x58c82f2bd9d7c097ed09bd0991fedc403b0ec270eb3d0158bfb095c06a03d719",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://91168ca26a10980df2cdc3fbfe8ddf372c002b7ef19e3c59a0c9870d64198f1b",
+    "dweb:/ipfs/QmUSpaM825vd1SwvF38esgbdLgYiPwefKaFERTWvUi6uSK"
+   ]
+  },
+  "lib/uniswap-v4-core/src/interfaces/external/IERC20Minimal.sol": {
+   "keccak256": "0xeccadf1bf69ba2eb51f2fe4fa511bc7bb05bbd6b9f9a3cb8e5d83d9582613e0f",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://118757369892687b99ef46ce28d6861f62c098285bd7687a4f17f7e44e5f81de",
+    "dweb:/ipfs/QmUxqbYqQtcEwwFbb9e6BBMePEaSgN8C45v6RKubD4ib8d"
+   ]
+  },
+  "lib/uniswap-v4-core/src/interfaces/external/IERC6909Claims.sol": {
+   "keccak256": "0xa586f345739e52b0488a0fe40b6e375cce67fdd25758408b0efcb5133ad96a48",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://e8c557b7e52abdbbd82e415a1acc27921446a7fd090b7d4877e52be72619547f",
+    "dweb:/ipfs/QmXE2KNPbXmGX8BQF3ei6zhzRTnhoTQg39XmqMnkhbr6QK"
+   ]
+  },
+  "lib/uniswap-v4-core/src/libraries/BitMath.sol": {
+   "keccak256": "0x51b9be4f5c4fd3e80cbc9631a65244a2eb2be250b6b7f128a2035080e18aee8d",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://fe98bbd5498e912146b9319827fc63621eb66ff55d5baae0fa02a7a972ab8d1e",
+    "dweb:/ipfs/QmY5hCuyrtgsJtk4AavrxcvBkRrChfr4N6ZnhdC8roPpNi"
+   ]
+  },
+  "lib/uniswap-v4-core/src/libraries/CustomRevert.sol": {
+   "keccak256": "0x111ed3031b6990c80a93ae35dde6b6ac0b7e6af471388fdd7461e91edda9b7de",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://c9ea883c98d6ae1829160d0977bb5195761cfd5bc81692d0a941f45717f594cd",
+    "dweb:/ipfs/QmZPwxzaeMNv536wzrAMrMswu7vMHuqPVpjcqL3YvCMoxt"
+   ]
+  },
+  "lib/uniswap-v4-core/src/libraries/FixedPoint128.sol": {
+   "keccak256": "0xad236e10853f4b4b20a35a9bb52b857c4fc79874846b7e444e06ead7f2630542",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://0de1f9a06520b1a689660943faa14fc0b8344ab41fab9e6012ea34bff4b9b3eb",
+    "dweb:/ipfs/QmRNMPTyko7W6d6KxuTsnDBa9oZgDK4xiwRRq3H9ASTbwy"
+   ]
+  },
+  "lib/uniswap-v4-core/src/libraries/FullMath.sol": {
+   "keccak256": "0x4fc73a00817193fd3cac1cc03d8167d21af97d75f1815a070ee31a90c702b4c2",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://c3b2d66d36b1ad56b1ab6e2eb8a816740877b40b461c93f125e88621c8378e52",
+    "dweb:/ipfs/QmPGvMZzKQvNiWKd8aRzzdW7oAizwrMgcMtnaworDkVHFC"
+   ]
+  },
+  "lib/uniswap-v4-core/src/libraries/Hooks.sol": {
+   "keccak256": "0xd679b4b2d429689bc44f136050ebc958fb2d7d0d3a3c7b3e48c08ab4fba09aaa",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://287190cb72840e5eb63cc7a8a1d0b9150af17d8e4ea0323f47c7e7928f2033cb",
+    "dweb:/ipfs/QmVfqWBnAQM2jUcuREDdvjcP21gNuLU35CoL3NG5CEhNcx"
+   ]
+  },
+  "lib/uniswap-v4-core/src/libraries/LPFeeLibrary.sol": {
+   "keccak256": "0xbf6914e01014e7c1044111feb7df7a3d96bb503b3da827ad8464b1955580d13b",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://33823c20a91882c9aacdcbb02f0558c05209f4d5954aa6dd4fa17c95664db475",
+    "dweb:/ipfs/QmR7owkFgpfztpp1QUg3ut3nw9iPVQqLGP4hzgmZtRUQ2J"
+   ]
+  },
+  "lib/uniswap-v4-core/src/libraries/LiquidityMath.sol": {
+   "keccak256": "0x000ef2eadcc1eb7b2c18a77655f94e76e0e860f605783484657ef65fd6eda353",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://a766b620a7a22798b43c6c1f23b5c6cff0ebf588deb89842bad05208d448cd99",
+    "dweb:/ipfs/QmVKjaFJdzkqA3ey2Byum8iTCMssWVD8MmVC8rw62Tj5WD"
+   ]
+  },
+  "lib/uniswap-v4-core/src/libraries/ParseBytes.sol": {
+   "keccak256": "0x7533b13f53ee2c2c55500100b22ffd6e37e7523c27874edc98663d53a8672b15",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://82449058634fde28a085f3c59a6a5f412550c02181590593fd84c3e8b329aa17",
+    "dweb:/ipfs/Qmev4E9Au6SsE4wsArChCwfg94KhHc5gYsEsZUnjF5sRLa"
+   ]
+  },
+  "lib/uniswap-v4-core/src/libraries/Position.sol": {
+   "keccak256": "0xddab2a831f1befb6abf5567e77c4582169ca8156cf69eb4f22d8e87f7226a3f9",
+   "license": "BUSL-1.1",
+   "urls": [
+    "bzz-raw://c79fe61b50f3b70cff503abfa6f5643fcbefb9b794855bee1019b1e6d9c083b2",
+    "dweb:/ipfs/QmbKmYNQesaMz8bo1b7TMHQcAwaDd3eDPrE5pAdPPZTtk5"
+   ]
+  },
+  "lib/uniswap-v4-core/src/libraries/SafeCast.sol": {
+   "keccak256": "0x42c4a24f996a14d358be397b71f7ec9d7daf666aaec78002c63315a6ee67aa86",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://c3db86e2ba3679105fc32edec656c70282e1fede6cab11217702443f6c26fa59",
+    "dweb:/ipfs/QmX4yaaSPdKQzYNRsezjTvZKsubzS8JRTEGFD3fPpTTCcj"
+   ]
+  },
+  "lib/uniswap-v4-core/src/libraries/StateLibrary.sol": {
+   "keccak256": "0x96db333ee126a841dd959e38e452cc59d73583cb0437a1d48b2052e33a74f952",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://8672bba1eb69608299b0904f4ff305238eb18479d371c26518f278c9ee184cd0",
+    "dweb:/ipfs/QmTLu3s6ECvsEDHStQv8HTVHYtvkviBbdjPrFJd4SpVRFY"
+   ]
+  },
+  "lib/uniswap-v4-core/src/libraries/TickMath.sol": {
+   "keccak256": "0x4e1a11e154eb06106cb1c4598f06cca5f5ca16eaa33494ba2f0e74981123eca8",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://a79a57f7b240783b045168d1c4f774ac1812caf8f9a83cb6959a86b0b07b6c70",
+    "dweb:/ipfs/QmTb5kvxwDNW8jDuQaqdJ445cCFejNkUqEB17Bjo8UBiva"
+   ]
+  },
+  "lib/uniswap-v4-core/src/types/BalanceDelta.sol": {
+   "keccak256": "0xa719c8fe51e0a9524280178f19f6851bcc3b3b60e73618f3d60905d35ae5569f",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://7436928dc9de35c6c7c5c636cb51adaf295cfd590da83b19a004ae33cbec9ef9",
+    "dweb:/ipfs/QmRJ9yZkUpzk4433GX3LgVVL8jwpbSYSUwXcucKisf3v4H"
+   ]
+  },
+  "lib/uniswap-v4-core/src/types/BeforeSwapDelta.sol": {
+   "keccak256": "0x2a774312d91285313d569da1a718c909655da5432310417692097a1d4dc83a78",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://a2c7a0379955cff9c17ab9e61f95e42909aa5947c22740f86ce940d09856f782",
+    "dweb:/ipfs/QmaAuo8UBYXsGrVuKh8iRoAAdqwtg1jDq515cW1ZRP5m9K"
+   ]
+  },
+  "lib/uniswap-v4-core/src/types/Currency.sol": {
+   "keccak256": "0x4a0b84b282577ff6f8acf13ec9f4d32dbb9348748b49611d00e68bee96609c93",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://45f9d62ab3d51b52957279e353853ba1547c3182c9a1e3d1846ada4a90263b01",
+    "dweb:/ipfs/QmS8NG84ccQS1yXVD8cv3eKX7J1UKxuJhbUfHTQR2opKF5"
+   ]
+  },
+  "lib/uniswap-v4-core/src/types/PoolId.sol": {
+   "keccak256": "0x308311916ea0f5c2fd878b6a2751eb223d170a69e33f601fae56dfe3c5d392af",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://669c2cd7ac17690b5d8831e0bda72822376c3a04b36afed6d31df4d75fe60918",
+    "dweb:/ipfs/QmT6EpkxqU8VF3WsgrZ66F3s1cCQRffR95z1HDYZz7ph6y"
+   ]
+  },
+  "lib/uniswap-v4-core/src/types/PoolKey.sol": {
+   "keccak256": "0xf89856e0580d7a4856d3187a76858377ccee9d59702d230c338d84388221b786",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://6f3118fa189025695c37fdf0bdd1190f085ad097484d3c88cf4c56d1db65f639",
+    "dweb:/ipfs/QmamXpgtB8GV1CaFLvqefPWSoikLDhMk1yU4heBnVzU8gi"
+   ]
+  },
+  "lib/uniswap-v4-core/src/types/PoolOperation.sol": {
+   "keccak256": "0x7a1a107fc1f2208abb2c9364c8c54e56e98dca27673e9441bed2b949b6382162",
+   "license": "MIT",
+   "urls": [
+    "bzz-raw://4ad2470383bc5595d5af17840c64971f457adac68895a4db41ba5c71a4478e07",
+    "dweb:/ipfs/QmdwKhBHDZFuqXrR2BfDBD9r7rB2ULGQBznsajRTkTmL4c"
+   ]
+  },
+  "src/FactoryList.sol": {
+   "keccak256": "0xb50a39c15a4d8647b6f72a838dac25b874699852a2c49caeeaa24395f3c204b2",
+   "license": "UNLICENSED",
+   "urls": [
+    "bzz-raw://55630900275b74d087eb189d3c42b09b806921dcdc74de080a73b3a70219381a",
+    "dweb:/ipfs/QmUx6augYyAiLzyYFHc5dQcmCd3nwdTr8iwW4WRTKcJd5X"
+   ]
+  },
+  "src/v3/PangeaFeeHookV2M.sol": {
+   "keccak256": "0xd1bae7a652fd55778b7e737fc493b9f7b9a3c2103bf6ccb52f5a463bbbfe80ae",
+   "license": "UNLICENSED",
+   "urls": [
+    "bzz-raw://096b46ca11d02073532efbbad5114a9479b1ac8140a0cda37fc577621b693ede",
+    "dweb:/ipfs/QmVXek8b8J8rWKJNAmuZSz3Vnjk2rmhLstBENg82Wk4Byr"
+   ]
+  },
+  "src/v3/V3Shared.sol": {
+   "keccak256": "0xc98f40858497e88f2dcb6fd30b831cf2767800e32997a9f91d24a8857efca267",
+   "license": "UNLICENSED",
+   "urls": [
+    "bzz-raw://2cfc9193d386b26085ba4c08ad2786597e7b3d54998f0c03d16ee35fb42ca03f",
+    "dweb:/ipfs/QmWYoJ4VHC31rwQXNisUhTeF83wXTaYNraqVHBrRpX2osF"
+   ]
+  }
+ },
+ "version": 1
+}
